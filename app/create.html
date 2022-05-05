@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+
+    <!-- vendor css -->
+    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Starlight CSS -->
+    <link rel="stylesheet" href="../css/starlight.css">
+
+    <style>
+    	.s-code{
+    		height: auto;
+    		overflow: auto;
+    		padding: 10px 50px;
+    		background-color: #e9ecef;
+    	}
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ########## START: LEFT PANEL ########## -->
+    <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i>php</a></div>
+    <div class="sl-sideleft">
+      <div class="input-group input-group-search">
+        <input type="search" name="search" class="form-control" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn"><i class="fa fa-search"></i></button>
+        </span><!-- input-group-btn -->
+      </div><!-- input-group -->
+
+      <label class="sidebar-label"></label>
+      <div class="sl-sideleft-menu">
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+            <span class="menu-item-label">php Crud</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item">
+            <a href="create.html" class="nav-link">Create.php</a>
+          </li>
+          <li class="nav-item">
+            <a href="edit.html" class="nav-link">edit.php</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">index.php</a>
+          </li>
+        </ul>
+
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+            <span class="menu-item-label">Classes</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item">
+            <a href="database.html" class="nav-link">Database.php</a>
+          </li>
+          <li class="nav-item">
+            <a href="student.html" class="nav-link">Student.php</a>
+          </li>
+        </ul>
+      </div><!-- sl-sideleft-menu -->
+      <br>
+    </div><!-- sl-sideleft -->
+    <!-- ########## END: LEFT PANEL ########## -->
+
+    <!-- ########## START: HEAD PANEL ########## -->
+    <div class="sl-header">
+      <div class="sl-header-left">
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+      </div><!-- sl-header-left -->
+      
+    </div><!-- sl-header -->
+    <!-- ########## END: HEAD PANEL ########## -->
+
+<!-- ########## START: MAIN PANEL ########## -->
+<div class="sl-mainpanel">
+<div class="sl-pagebody">
+<h3><span style="border-bottom: 2px solid black">
+PHP OOP
+</span></h3>
+<h5>How to data Insert ?</h5>
+<p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Source Code</p>
+<div class="s-code">
+<h6>create.php</h6>
+<xmp>
+<?php
+spl_autoload_register(function($class_name){
+include "classes/".$class_name.".php";
+});
+
+//error_reporting(0);
+
+$student = new Student();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+$insdata = $student->insertAdmission($_POST);
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert.php</title>
+</head>
+<body>
+ <form action="" method="POST">
+	<div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+  <div class="d-flex justify-content-end">
+  <input type="submit" class="btn btn-primary">Sign in</input>
+  </div>
+ </form>
+</body>
+</html>
+</xmp>
+</div>
+
+
+<div class="row mt-5">
+	<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert.php</title>
+</head>
+<body>
+ <form action="" method="POST">
+	<div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student Name</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+
+  <div class="row mb-3">
+	  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+	<div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+   </div>
+  </div>
+  <div class="d-flex justify-content-end">
+  <input type="submit" class="btn btn-primary" value="Sign in">
+  </div>
+ </form>
+</body>
+</html>
+</div>
+</div>
+</div><!-- sl-pagebody -->
+</div><!-- sl-mainpanel -->
+    <!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/popper.js/popper.js"></script>
+    <script src="../lib/bootstrap/bootstrap.js"></script>
+    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../js/starlight.js"></script>
+
+  </body>
+</html>
+
+
+
+

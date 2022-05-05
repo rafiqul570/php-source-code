@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+
+    <!-- vendor css -->
+    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- Starlight CSS -->
+    <link rel="stylesheet" href="../css/starlight.css">
+
+    <style>
+      .s-code{
+        height: auto;
+        overflow: auto;
+        padding: 10px 50px;
+        background-color: #e9ecef;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ########## START: LEFT PANEL ########## -->
+    <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i>php</a></div>
+    <div class="sl-sideleft">
+      <div class="input-group input-group-search">
+        <input type="search" name="search" class="form-control" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn"><i class="fa fa-search"></i></button>
+        </span><!-- input-group-btn -->
+      </div><!-- input-group -->
+
+      <label class="sidebar-label"></label>
+      <div class="sl-sideleft-menu">
+        <a href="index.html" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Dashboard</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+            <span class="menu-item-label">php Crud</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item">
+            <a href="create.html" class="nav-link">Create.php</a>
+          </li>
+          <li class="nav-item">
+            <a href="edit.html" class="nav-link">edit.php</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">index.php</a>
+          </li>
+        </ul>
+
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
+            <span class="menu-item-label">Classes</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item">
+            <a href="database.html" class="nav-link">Database.php</a>
+          </li>
+          <li class="nav-item">
+            <a href="student.html" class="nav-link">Student.php</a>
+          </li>
+        </ul>
+      </div><!-- sl-sideleft-menu -->
+      <br>
+    </div><!-- sl-sideleft -->
+    <!-- ########## END: LEFT PANEL ########## -->
+
+    <!-- ########## START: HEAD PANEL ########## -->
+    <div class="sl-header">
+      <div class="sl-header-left">
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+      </div><!-- sl-header-left -->
+      
+    </div><!-- sl-header -->
+    <!-- ########## END: HEAD PANEL ########## -->
+
+<!-- ########## START: MAIN PANEL ########## -->
+<div class="sl-mainpanel">
+<div class="sl-pagebody">
+<h3><span style="border-bottom: 2px solid black">
+PHP OOP
+</span></h3>
+<h5>How to declare a class ?</h5>
+<p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Source Code</p>
+<div class="s-code">
+<h6>classes/Student.php</h6>
+
+<xmp>
+<?php
+spl_autoload_register(function($class_name){
+include "classes/".$class_name.".php";
+});
+
+//error_reporting(0);
+class Student{
+
+  private $db;
+
+  public function __construct(){
+    $this->db = new Database();
+      
+   }
+
+
+//Insert DATA
+ public function insertAdmission($data){
+    $name = $data['name'];
+    $fname = $data['fname'];
+    $admi_class = $data['admi_class'];
+    $admi_roll = $data['admi_roll'];
+    $admi_date = $data['admi_date'];
+  
+  //upload image
+    $file_name = $_FILES['image']['name'];
+    $file_size = $_FILES['image']['size'];
+    $tmp_name  = $_FILES['image']['tmp_name'];
+    $permited  = array('jpeg', 'jpg', 'png', 'gif');
+    $div = explode(".", $file_name);
+    $file_ext = strtolower(end($div));
+    $file_check = in_array($file_ext, $permited);
+    $image = uniqid().$file_ext;
+    $uploaded_image = '../uploads/image/'.$image;
+            
+  if ($name == "" || $fname == "" || $admi_class == "" || $admi_roll == "" || $image == "" ) {
+        
+      $msg = "<div class='alert  alert-success alert-dismissible fade show' role='alert'>
+                  <span class='badge badge-pill badge-success'> Error !</span> Field must not be Empty!
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                  </button>
+              </div>";
+    
+         return $msg; 
+   
+ } 
+
+  if (empty($file_name)){
+    $msg = '<div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong>Sorry !</strong> Please Select any Image .
+            </div>';
+    
+          return $msg; 
+  
+     
+   }elseif($file_size > 304803456){
+
+    $msg = '<div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong>Error !</strong> Image size should be less then 3KB
+            </div>';
+    
+          return $msg; 
+
+   }elseif($file_check === false) {
+    
+        
+        $msg = '<div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong>Sorry !</strong>You can upload only  -  ( jpeg, jpg, png, gif )
+            </div>';
+  
+      return $msg;  
+    
+    }else{
+    
+    
+   move_uploaded_file($tmp_name, $uploaded_image);
+
+   
+   $query = "INSERT INTO admission (name,fname,admi_class,admi_date,admi_roll,image) 
+  VALUES ('$name', '$fname', '$admi_class', '$admi_date', '$admi_roll', '$image');";
+    
+    $result = $this->db->insert($query);
+
+   if ($result) {
+
+            $msg = '<div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong>Success !</strong> Data Inserte Successfully.
+            </div>';
+  
+       return $msg;
+     
+       
+   }else{
+
+        $msg = '<div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+         <strong>Error !</strong> Data Not Inserted.
+        </div>';
+  
+       return $msg; 
+     }
+ 
+    
+    }
+
+  }
+  
+  //Select data in index page (Admission) 
+    public function getAdmissionData(){
+      $query = "SELECT * FROM admission ORDER BY id DESC";
+            $result = $this->db->select($query);
+            return $result;
+
+ }
+
+  //Select data in View page (Admission) 
+    public function getAdmissionViewData($id){
+      $query = "SELECT * FROM admission WHERE id = '$id' ";
+            $result = $this->db->select($query);
+            return $result;
+
+    }
+
+//Select data in edit page (Admission)
+ 
+    public function getAdmissionUpdateData($id){
+      
+    $sql = "SELECT * FROM admission WHERE id = '$id' LIMIT 1";
+        $query = $this->db->select($sql);
+                $result = mysqli_fetch_array($query);
+                return $result;
+     }
+
+
+//Update Image/Data
+   public function updateAdmission($id, $data){
+      $sql = "SELECT * FROM admission WHERE id = '$id'";
+      $result = $this->db->select($sql);
+      $row = mysqli_fetch_array($result);
+      
+      $name = $data['name'];
+      $fname = $data['fname'];
+      $admi_class = $data['admi_class'];
+      $admi_date = $data['admi_date'];
+      $admi_roll = $data['admi_roll'];
+    
+        
+      $img = $_FILES['image'];
+      $tmp_name = $img['tmp_name'];
+      $image = uniqid().$_FILES['image']['name'];
+      $fileName = '../uploads/image/'.$image;
+      if ($img['size'] > 1) {
+        if (file_exists("../uploads/image/".$row['image']) && !empty($row['image'])) {
+          unlink("../uploads/image/".$row['image']);
+        }
+
+      move_uploaded_file($tmp_name, $fileName);
+
+$query = "UPDATE admission SET name = '$name', fname = '$fname', 
+admi_class = '$admi_class', admi_date = '$admi_date', admi_roll = '$admi_roll', 
+image = '$image' WHERE id = '$id' ";
+    
+    
+    }else{
+    
+
+$query = "UPDATE admission SET name = '$name', fname = '$fname', 
+admi_class = '$admi_class', admi_date = '$admi_date', admi_roll = '$admi_roll'
+ WHERE id = '$id' ";
+    
+    }
+
+    $result = $this->db->update($query);
+
+    if ($result) {
+      header("Location: all-student.php?success_msg=".urlencode('
+             <div class="alert alert-danger alert-dismissible">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success !</strong> Data Update Successfully.
+             </div>
+
+        '));
+   
+
+  }else{
+
+      header("Location: update.php?error_msg=".urlencode('
+
+            <div class="alert alert-danger alert-dismissible">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success !</strong> Data Not Update.
+             </div>
+
+        '));
+  
+  }
+   
+
+  } 
+
+
+//Delete Admission  
+  public function deleteAdmission($id){
+        
+        $img = "SELECT * FROM admission WHERE id = '$id'";
+        $result = $this->db->select($img);
+            $row = mysqli_fetch_array($result);
+            $image = $row['image'];
+            if(!empty($image)){
+            unlink("../uploads/image/".$image); 
+            }
+           
+            $query = "DELETE FROM admission WHERE id = '$id'";
+            $result = $this->db->delete($query);   
+            
+       
+        if ($result){
+          $msg = '<div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               <strong>Success !</strong> Data Delete Successfully.
+              </div>';
+      
+           return $msg; 
+          
+     
+    }else{
+
+      $msg = '<div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Error !</strong> Data Not Deleted.
+                </div>';
+        
+             return $msg; 
+    
+    }
+    
+        }
+
+
+}
+
+?>
+
+</xmp>
+
+</div><!-- s-code -->
+</div><!-- sl-pagebody -->
+</div><!-- sl-mainpanel -->
+    <!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/popper.js/popper.js"></script>
+    <script src="../lib/bootstrap/bootstrap.js"></script>
+    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../js/starlight.js"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
